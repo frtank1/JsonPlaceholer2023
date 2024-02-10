@@ -8,4 +8,8 @@ class GetPostsUseCaseImpl(private val postsRepository: PostsRepository) : GetPos
     override suspend fun invoke(): List<Post> {
         return postsRepository.getPosts()
     }
+
+    override suspend fun getPost(id:Int): Post {
+        return postsRepository.getPost(id)
+    }
 }

@@ -10,4 +10,7 @@ class PostsRepositoryImpl(private val mainApi: MainApi) : PostsRepository {
         return mainApi.getPosts()
     }
 
+    override suspend fun getPost(id:Int):Post{
+        return mainApi.getPost(id)
+    }
 }
