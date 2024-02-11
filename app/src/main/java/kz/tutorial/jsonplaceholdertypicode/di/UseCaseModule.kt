@@ -1,7 +1,7 @@
 package kz.tutorial.jsonplaceholdertypicode.di
 
-import kz.tutorial.jsonplaceholdertypicode.data.GetPostsUseCaseImpl
-import kz.tutorial.jsonplaceholdertypicode.domain.GetPostsUseCase
+import kz.tutorial.jsonplaceholdertypicode.data.client.GetPostsUseCaseImpl
+import kz.tutorial.jsonplaceholdertypicode.domain.client.GetPostsUseCase
 import org.koin.dsl.module
 
 val useCaseModule = module {
