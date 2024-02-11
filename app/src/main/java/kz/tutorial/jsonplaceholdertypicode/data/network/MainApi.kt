@@ -8,4 +8,5 @@ interface MainApi {
     @GET("posts")
     suspend fun getPosts(): List<Post>
 
+
 }
