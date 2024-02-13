@@ -7,4 +7,5 @@
 	<string name="vector">vector</string>
 	<string name="users">users</string>
 	<string name="profile">profile</string>
+	<string name="email">Email:</string>
 </resources>
