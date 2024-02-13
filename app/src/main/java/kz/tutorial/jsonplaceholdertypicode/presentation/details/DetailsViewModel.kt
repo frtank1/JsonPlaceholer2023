@@ -14,15 +14,20 @@ class DetailsViewModel(private val getPostUseCase: GetPostUseCase, val id:Int) :
     val postDetailsLiveData: LiveData<AppState> = _postDetailsLiveData
 
     init {
-
+        _postDetailsLiveData.postValue(AppState.Loading)
+        getPosts()
     }
 
     private fun getPosts() {
         viewModelScope.launch {
-            val posts = getPostUseCase.invoke(id)
+            val post = getPostUseCase.invoke(id)
             val list = getPostUseCase.getComments(id)
 
-        }
+            if(post!=null||list!=null){
+                _postDetailsLiveData.postValue(AppState.Success(list,post))
+            }else{
+                _postDetailsLiveData.postValue(AppState.Error(error("null")))
+            }
     }
 
 }
