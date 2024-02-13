@@ -9,4 +9,5 @@ val viewModelModule = module {
     viewModel {
         PostsViewModel(get())
     }
+
 }
