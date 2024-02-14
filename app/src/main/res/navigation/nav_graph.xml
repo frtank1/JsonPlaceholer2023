@@ -6,7 +6,17 @@
 	<fragment
 		android:id="@+id/posts"
 		android:name="kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostsFragment">
-		
+		<action app:destination="@+id/details"
+			android:id="@+id/posts_to_details"/>
+	</fragment>
+	
+	<fragment
+		android:id="@+id/details"
+		android:name="kz.tutorial.jsonplaceholdertypicode.presentation.details.DetailsFragment">
+	<argument
+		android:name="id"
+		app:argType="integer"
+		app:nullable="false"/>
 	</fragment>
 	
 </navigation>

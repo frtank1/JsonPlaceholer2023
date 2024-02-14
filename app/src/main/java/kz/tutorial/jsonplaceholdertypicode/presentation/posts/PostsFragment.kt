@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kz.tutorial.jsonplaceholdertypicode.R
@@ -42,7 +43,7 @@ class PostsFragment : Fragment() {
     private fun initAdapter() {
         adapter = PostAdapter(layoutInflater)
         adapter.listener = ClickListener {
-
+            NavHostFragment.findNavController(this).navigate(PostsFragmentDirections.postsToDetails(it.id))
         }
     }
 

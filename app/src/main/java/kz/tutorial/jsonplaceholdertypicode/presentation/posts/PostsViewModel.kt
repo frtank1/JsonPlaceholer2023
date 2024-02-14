@@ -1,5 +1,7 @@
 package kz.tutorial.jsonplaceholdertypicode.presentation.posts
 
+import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,5 +25,6 @@ class PostsViewModel(private val getPostsUseCase: GetPostsUseCase) : ViewModel()
             _postsLiveData.postValue(posts)
         }
     }
+
 
 }

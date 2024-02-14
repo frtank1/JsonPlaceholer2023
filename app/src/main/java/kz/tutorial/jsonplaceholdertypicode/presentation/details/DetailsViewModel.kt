@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 import kz.tutorial.jsonplaceholdertypicode.domain.client.GetPostUseCase
 
 
-class DetailsViewModel(private val getPostUseCase: GetPostUseCase, val id:Int) : ViewModel(){
+class DetailsViewModel(private val getPostUseCase: GetPostUseCase, val id: Int) : ViewModel() {
 
     private val _postDetailsLiveData: MutableLiveData<AppState> = MutableLiveData()
     val postDetailsLiveData: LiveData<AppState> = _postDetailsLiveData
@@ -23,11 +23,12 @@ class DetailsViewModel(private val getPostUseCase: GetPostUseCase, val id:Int) :
             val post = getPostUseCase.invoke(id)
             val list = getPostUseCase.getComments(id)
 
-            if(post!=null||list!=null){
-                _postDetailsLiveData.postValue(AppState.Success(list,post))
-            }else{
+            if (post != null || list != null) {
+                _postDetailsLiveData.postValue(AppState.Success(list, post))
+            } else {
                 _postDetailsLiveData.postValue(AppState.Error(error("null")))
             }
-    }
+        }
 
+    }
 }

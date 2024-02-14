@@ -15,7 +15,7 @@
 		app:layout_constraintTop_toTopOf="parent">
 		
 		<TextView
-			android:id="@+id/tv_title"
+			android:id="@+id/title_main"
 			style="@style/Header1"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
 		</LinearLayout>
 		
 		<TextView
-			android:id="@+id/tv_body"
+			android:id="@+id/body"
 			style="@style/Body1"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -86,8 +86,15 @@
 				android:text="Show All"
 				android:textColor="@color/links" />
 		</LinearLayout>
-		<include layout="@layout/three_commets" />
+		<include android:id="@+id/comments" layout="@layout/three_commets" />
+		<ProgressBar
+			android:id="@+id/loading"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			/>
 	</LinearLayout>
+	
+
 	
 
 
