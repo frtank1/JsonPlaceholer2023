@@ -15,7 +15,7 @@ val viewModelModule = module {
     }
 
     viewModel {(postId: Int) ->
-        DetailsViewModel(get(), postId)
+        DetailsViewModel(get(),get(), postId)
     }
 
     viewModel {(postId: Int) ->
