@@ -1,4 +1,4 @@
-package kz.tutorial.jsonplaceholdertypicode.presentation.details
+package kz.tutorial.jsonplaceholdertypicode.presentation.posts.details
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package kz.tutorial.jsonplaceholdertypicode.presentation.comments
+package kz.tutorial.jsonplaceholdertypicode.presentation.posts.details.comments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,8 +17,8 @@ class CommentsFragment : Fragment() {
 
     private var _binding : FragmentCommentsBinding? = null
     private val binding get() = _binding!!
-    private  lateinit var  adapter:CommetsAdapter
-    private val viewModel:CommentsViewModel by viewModel{
+    private  lateinit var  adapter: CommetsAdapter
+    private val viewModel: CommentsViewModel by viewModel{
         parametersOf(arguments?.getInt("id", 0))
     }
 

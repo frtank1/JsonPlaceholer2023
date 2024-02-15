@@ -3,6 +3,7 @@
     <style name="Header1">
         <item name="android:textSize">24sp</item>
         <item name="fontWeight">700</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="Header2">

@@ -1,4 +1,4 @@
-package kz.tutorial.jsonplaceholdertypicode.presentation.details
+package kz.tutorial.jsonplaceholdertypicode.presentation.posts.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -81,7 +81,11 @@ class DetailsFragment : Fragment() {
 
     private fun observeOnclick(){
         binding.showAll.setOnClickListener {
-            NavHostFragment.findNavController(this).navigate(DetailsFragmentDirections.detailsToComments(id_post))
+            NavHostFragment.findNavController(this).navigate(
+                kz.tutorial.jsonplaceholdertypicode.presentation.posts.details.DetailsFragmentDirections.detailsToComments(
+                    id_post
+                )
+            )
         }
     }
 

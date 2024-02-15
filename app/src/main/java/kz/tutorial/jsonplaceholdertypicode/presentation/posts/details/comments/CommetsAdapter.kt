@@ -1,4 +1,4 @@
-package kz.tutorial.jsonplaceholdertypicode.presentation.comments
+package kz.tutorial.jsonplaceholdertypicode.presentation.posts.details.comments
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

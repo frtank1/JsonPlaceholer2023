@@ -12,7 +12,7 @@
 	
 	<fragment
 		android:id="@+id/details"
-		android:name="kz.tutorial.jsonplaceholdertypicode.presentation.details.DetailsFragment">
+		android:name="kz.tutorial.jsonplaceholdertypicode.presentation.posts.details.DetailsFragment">
 	<argument
 		android:name="id"
 		app:argType="integer"
@@ -24,11 +24,16 @@
 	
 	<fragment
 		android:id="@+id/comments"
-		android:name="kz.tutorial.jsonplaceholdertypicode.presentation.comments.CommentsFragment">
+		android:name="kz.tutorial.jsonplaceholdertypicode.presentation.posts.details.comments.CommentsFragment">
 		<argument
 			android:name="id"
 			app:argType="integer"
 			app:nullable="false"/>
+	</fragment>
+	
+	<fragment
+		android:id="@+id/users"
+		android:name="kz.tutorial.jsonplaceholdertypicode.presentation.users.UsersFragment">
 	</fragment>
 	
 </navigation>

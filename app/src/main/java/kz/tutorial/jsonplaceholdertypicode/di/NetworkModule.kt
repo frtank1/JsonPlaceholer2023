@@ -2,6 +2,7 @@ package kz.tutorial.jsonplaceholdertypicode.di
 
 import kz.tutorial.jsonplaceholdertypicode.data.network.MainApi
 import kz.tutorial.jsonplaceholdertypicode.constants.BASE_URL
+import kz.tutorial.jsonplaceholdertypicode.data.network.UsersApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -44,5 +45,16 @@ val networkModule = module {
             .addConverterFactory(gsonConverterFactory)
             .build()
             .create(MainApi::class.java)
+    }
+
+    factory<UsersApi> {
+        val okHttpClient: OkHttpClient = get()
+        val gsonConverterFactory: GsonConverterFactory = get()
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(gsonConverterFactory)
+            .build()
+            .create(UsersApi::class.java)
     }
 }

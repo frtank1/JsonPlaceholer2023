@@ -10,4 +10,5 @@
 	<string name="email">Email:</string>
 	<string name="comments">Comments</string>
 	<string name="show_all">Show All</string>
+	<string name="fl_name">Full Name:</string>
 </resources>

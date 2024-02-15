@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId){
                R.id.posts ->{Navigation.findNavController(binding.flContainer).navigate(R.id.posts)}
                 R.id.vector -> {}
-                R.id.users -> {}
+                R.id.users -> {Navigation.findNavController(binding.flContainer).navigate(R.id.users)}
                 R.id.profile -> {}
             }
             true
