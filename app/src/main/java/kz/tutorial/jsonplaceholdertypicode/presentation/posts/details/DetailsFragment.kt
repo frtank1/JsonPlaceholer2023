@@ -7,18 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import kz.tutorial.jsonplaceholdertypicode.databinding.FragmentDetailsBinding
-import kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostsFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 
 class DetailsFragment : Fragment() {
 
-    private var _binding: FragmentDetailsBinding? = null
+    private lateinit var binding: FragmentDetailsBinding
+
     private val id_post: Int by lazy {
         arguments?.getInt("id", 0) ?: 0
     }
-    private val binding get() = _binding!!
 
     private val viewModel: DetailsViewModel by viewModel {
         parametersOf(id_post)
@@ -30,7 +29,7 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentDetailsBinding.inflate(inflater, container, false)
+        binding = FragmentDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -74,12 +73,11 @@ class DetailsFragment : Fragment() {
                         }
                     }
                 }
-
             }
         }
     }
 
-    private fun observeOnclick(){
+    private fun observeOnclick() {
         binding.showAll.setOnClickListener {
             NavHostFragment.findNavController(this).navigate(
                 kz.tutorial.jsonplaceholdertypicode.presentation.posts.details.DetailsFragmentDirections.detailsToComments(

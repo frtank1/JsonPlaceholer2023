@@ -6,19 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import kz.tutorial.jsonplaceholdertypicode.R
-import kz.tutorial.jsonplaceholdertypicode.databinding.FragmentCommentsBinding
 import kz.tutorial.jsonplaceholdertypicode.databinding.FragmentUsersBinding
-import kz.tutorial.jsonplaceholdertypicode.presentation.posts.details.comments.CommentsState
-import kz.tutorial.jsonplaceholdertypicode.presentation.posts.details.comments.CommetsAdapter
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.SpaceItemDecoration
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class UsersFragment : Fragment() {
 
-    private var _binding: FragmentUsersBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentUsersBinding
     private lateinit var adapter: UsersAdapter
     private val viewModel: UsersViewModel by viewModel()
 
@@ -27,34 +22,36 @@ class UsersFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentUsersBinding.inflate(inflater,container,false)
-
-
-        init()
+        binding = FragmentUsersBinding.inflate(inflater, container, false)
+        initAdapter()
         initObservers()
         return binding.root
     }
 
-    private fun init() {
+    private fun initAdapter() {
         adapter = UsersAdapter()
         adapter.listener = ClickListener {
 
         }
-        binding.recycleUsers.layoutManager =  LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-        binding.recycleUsers.adapter =adapter
-        val spaceItemDecoration = SpaceItemDecoration(verticalSpaceInDp = 8, horizontalSpaceInDp = 16)
-       binding.recycleUsers.addItemDecoration(spaceItemDecoration)
+        binding.recycleUsers.layoutManager =
+            LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+        binding.recycleUsers.adapter = adapter
+        val spaceItemDecoration =
+            SpaceItemDecoration(verticalSpaceInDp = 8, horizontalSpaceInDp = 16)
+        binding.recycleUsers.addItemDecoration(spaceItemDecoration)
     }
 
     private fun initObservers() {
-        viewModel.usersLiveData.observe(viewLifecycleOwner){
-            when(it){
+        viewModel.usersLiveData.observe(viewLifecycleOwner) {
+            when (it) {
                 is UsersState.Error -> {
 
                 }
+
                 UsersState.Loading -> {
 
                 }
+
                 is UsersState.Success -> {
                     adapter.setData(it.listUsers)
                     adapter.notifyDataSetChanged()

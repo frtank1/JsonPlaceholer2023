@@ -1,7 +1,5 @@
 package kz.tutorial.jsonplaceholdertypicode.presentation.users
 
-import kz.tutorial.jsonplaceholdertypicode.domain.model.Comment
-import kz.tutorial.jsonplaceholdertypicode.domain.model.Post
 import kz.tutorial.jsonplaceholdertypicode.domain.model.User
 
 sealed class UsersState{

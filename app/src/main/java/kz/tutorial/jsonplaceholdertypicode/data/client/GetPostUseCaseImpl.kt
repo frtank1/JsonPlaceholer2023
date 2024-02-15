@@ -10,8 +10,4 @@ class GetPostUseCaseImpl (private val postRepository: PostsRepository) : GetPost
     override suspend fun invoke(id:Int): Post {
         return postRepository.getPost(id)
     }
-
-    override suspend fun getComments(id: Int): List<Comment> {
-      return postRepository.getComments(id)
-    }
 }

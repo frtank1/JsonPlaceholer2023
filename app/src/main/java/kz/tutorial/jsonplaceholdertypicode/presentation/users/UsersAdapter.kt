@@ -3,10 +3,7 @@ package kz.tutorial.jsonplaceholdertypicode.presentation.users
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kz.tutorial.jsonplaceholdertypicode.databinding.ItemCommentBinding
 import kz.tutorial.jsonplaceholdertypicode.databinding.ItemUsersBinding
-import kz.tutorial.jsonplaceholdertypicode.domain.model.Comment
-import kz.tutorial.jsonplaceholdertypicode.domain.model.Post
 import kz.tutorial.jsonplaceholdertypicode.domain.model.User
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
 

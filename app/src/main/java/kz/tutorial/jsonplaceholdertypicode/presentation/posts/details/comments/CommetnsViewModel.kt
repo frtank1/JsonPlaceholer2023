@@ -5,10 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import kz.tutorial.jsonplaceholdertypicode.data.client.GetCommentsUseCaseImpl
 import kz.tutorial.jsonplaceholdertypicode.domain.client.GetPostUseCase
 
 
-class CommentsViewModel(private val getPostUseCase: GetPostUseCase, val id: Int):ViewModel() {
+class CommentsViewModel(private val getCommentstUseCase: GetCommentsUseCaseImpl, val id: Int):ViewModel() {
 
     private val _commentsDetailsLiveData: MutableLiveData<CommentsState> = MutableLiveData()
     val commentsDetailsLiveData: LiveData<CommentsState> = _commentsDetailsLiveData
@@ -19,7 +20,7 @@ class CommentsViewModel(private val getPostUseCase: GetPostUseCase, val id: Int)
 
     private fun getComments() {
         viewModelScope.launch {
-            val list = getPostUseCase.getComments(id)
+            val list = getCommentstUseCase.getComments(id)
 
             if (list != null) {
                 _commentsDetailsLiveData.postValue(CommentsState.Success(list))
