@@ -30,7 +30,7 @@ class CommentsFragment : Fragment() {
     ): View? {
         _binding = FragmentCommentsBinding.inflate(inflater,container,false)
         adapter = CommetsAdapter()
-        binding.recycleComments.layoutManager =  LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        binding.recycleComments.layoutManager =  LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         binding.recycleComments.adapter =adapter
         init()
         initObservers()
@@ -54,6 +54,7 @@ class CommentsFragment : Fragment() {
                }
                is CommentsState.Success -> {
                    adapter.setData(it.listComment)
+                   adapter.notifyDataSetChanged()
                }
            }
        }

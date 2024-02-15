@@ -67,7 +67,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="match_parent"
 				android:layout_gravity="start"
-				android:text="Comments"
+				android:text="@string/comments"
 				android:textColor="@color/text_01" />
 			
 			<View
@@ -83,7 +83,7 @@
 				android:layout_height="wrap_content"
 				android:layout_gravity="end"
 				android:layout_marginStart="16dp"
-				android:text="Show All"
+				android:text="@string/show_all"
 				android:textColor="@color/links" />
 		</LinearLayout>
 		<include android:id="@+id/comments" layout="@layout/three_commets" />

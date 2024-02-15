@@ -17,10 +17,13 @@
 		android:name="id"
 		app:argType="integer"
 		app:nullable="false"/>
+		<action
+			app:destination="@+id/comments"
+			android:id="@+id/details_to_comments"/>
 	</fragment>
 	
 	<fragment
-		android:id="@+id/сomments"
+		android:id="@+id/comments"
 		android:name="kz.tutorial.jsonplaceholdertypicode.presentation.comments.CommentsFragment">
 		<argument
 			android:name="id"

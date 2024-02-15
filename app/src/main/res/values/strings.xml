@@ -8,4 +8,6 @@
 	<string name="users">users</string>
 	<string name="profile">profile</string>
 	<string name="email">Email:</string>
+	<string name="comments">Comments</string>
+	<string name="show_all">Show All</string>
 </resources>
