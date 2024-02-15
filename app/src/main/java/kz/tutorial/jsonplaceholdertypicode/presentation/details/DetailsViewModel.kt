@@ -10,11 +10,11 @@ import kz.tutorial.jsonplaceholdertypicode.domain.client.GetPostUseCase
 
 class DetailsViewModel(private val getPostUseCase: GetPostUseCase, val id: Int) : ViewModel() {
 
-    private val _postDetailsLiveData: MutableLiveData<AppState> = MutableLiveData()
-    val postDetailsLiveData: LiveData<AppState> = _postDetailsLiveData
+    private val _postDetailsLiveData: MutableLiveData<PostState> = MutableLiveData()
+    val postDetailsLiveData: LiveData<PostState> = _postDetailsLiveData
 
     init {
-        _postDetailsLiveData.postValue(AppState.Loading)
+        _postDetailsLiveData.postValue(PostState.Loading)
         getPosts()
     }
 
@@ -24,9 +24,9 @@ class DetailsViewModel(private val getPostUseCase: GetPostUseCase, val id: Int) 
             val list = getPostUseCase.getComments(id)
 
             if (post != null || list != null) {
-                _postDetailsLiveData.postValue(AppState.Success(list, post))
+                _postDetailsLiveData.postValue(PostState.Success(list, post))
             } else {
-                _postDetailsLiveData.postValue(AppState.Error(error("null")))
+                _postDetailsLiveData.postValue(PostState.Error(error("null")))
             }
         }
 

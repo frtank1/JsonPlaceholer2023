@@ -19,4 +19,13 @@
 		app:nullable="false"/>
 	</fragment>
 	
+	<fragment
+		android:id="@+id/сomments"
+		android:name="kz.tutorial.jsonplaceholdertypicode.presentation.comments.CommentsFragment">
+		<argument
+			android:name="id"
+			app:argType="integer"
+			app:nullable="false"/>
+	</fragment>
+	
 </navigation>

@@ -1,34 +1,30 @@
 package kz.tutorial.jsonplaceholdertypicode.presentation.details
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import kz.tutorial.jsonplaceholdertypicode.R
+import androidx.fragment.app.Fragment
 import kz.tutorial.jsonplaceholdertypicode.databinding.FragmentDetailsBinding
-import kz.tutorial.jsonplaceholdertypicode.presentation.extensions.showToast
-import kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 
 class DetailsFragment : Fragment() {
 
-    private var _bindig:FragmentDetailsBinding? = null
-    private val binding get() =_bindig!!
+    private var _binding: FragmentDetailsBinding? = null
+    private val binding get() = _binding!!
 
-    private val viewModel: DetailsViewModel by viewModel{
-        parametersOf(arguments?.getInt("id",0))
-}
+    private val viewModel: DetailsViewModel by viewModel {
+        parametersOf(arguments?.getInt("id", 0))
+    }
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _bindig = FragmentDetailsBinding.inflate(inflater,container,false)
+        _binding = FragmentDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -36,17 +32,19 @@ class DetailsFragment : Fragment() {
         initViews()
     }
 
-    fun initViews(){
+    fun initViews() {
         viewModel.postDetailsLiveData.observe(viewLifecycleOwner) {
             with(binding) {
-                when(it){
-                    is AppState.Error -> {
+                when (it) {
+                    is PostState.Error -> {
                     }
-                    AppState.Loading -> {
-                        loading.visibility =View.VISIBLE
+
+                    PostState.Loading -> {
+                        loading.visibility = View.VISIBLE
                     }
-                    is AppState.Success -> {
-                        loading.visibility =View.GONE
+
+                    is PostState.Success -> {
+                        loading.visibility = View.GONE
                         titleMain.text = it.post.title
                         body.text = it.post.body
                         with(comments) {
