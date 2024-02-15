@@ -15,7 +15,7 @@
 		android:layout_marginTop="16dp"
 		android:layout_marginStart="16dp"
 		android:textColor="@color/text_01"
-		android:text="@string/comments"
+		android:text="@string/Users"
 		tools:text="header" />
 	
 	<androidx.recyclerview.widget.RecyclerView

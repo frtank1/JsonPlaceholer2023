@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/users_card"
-	android:layout_marginTop="16dp"
+	android:layout_marginTop="12dp"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:foreground="?android:attr/selectableItemBackground">
@@ -34,9 +34,10 @@
 			<TextView
 				android:id="@+id/fl_name"
 				style="@style/Body1"
+				android:layout_marginStart="8dp"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:textColor="@color/main_01" />
+				android:textColor="@color/text_01" />
 		</LinearLayout>
 		
 		<LinearLayout
@@ -53,9 +54,10 @@
 			<TextView
 				android:id="@+id/mail"
 				style="@style/Body1"
+				android:layout_marginStart="8dp"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:textColor="@color/main_01" />
+				android:textColor="@color/links" />
 		</LinearLayout>
 		
 	
