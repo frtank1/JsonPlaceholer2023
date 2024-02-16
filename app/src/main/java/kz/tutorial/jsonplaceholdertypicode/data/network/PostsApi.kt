@@ -14,7 +14,6 @@ interface PostsApi {
     @GET("posts/{id}")
     suspend fun getPost(@Path("id") id: Int): Post
 
-
     @GET("posts/{id}/comments")
     suspend fun getComments(@Path("id") id: Int): List<Comment>
 

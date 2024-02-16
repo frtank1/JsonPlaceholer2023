@@ -1,15 +1,15 @@
 <resources>
-	<string name="hello_blank_fragment">Hello blank fragment</string>
-	<string name="by">By:</string>
-	<string name="app_name">JsonPlaceholder Typicode</string>
-	<string name="main">main</string>
-	<string name="posts">posts</string>
-	<string name="vector">vector</string>
-	<string name="Users">Users</string>
-	<string name="users">users</string>
-	<string name="profile">profile</string>
-	<string name="email">Email:</string>
-	<string name="comments">Comments</string>
-	<string name="show_all">Show All</string>
-	<string name="fl_name">Full Name:</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="by">By:</string>
+    <string name="app_name">JsonPlaceholder Typicode</string>
+    <string name="main">main</string>
+    <string name="posts">posts</string>
+    <string name="vector">vector</string>
+    <string name="Users">Users</string>
+    <string name="users">users</string>
+    <string name="profile">profile</string>
+    <string name="email">Email:</string>
+    <string name="comments">Comments</string>
+    <string name="show_all">Show All</string>
+    <string name="fl_name">Full Name:</string>
 </resources>
