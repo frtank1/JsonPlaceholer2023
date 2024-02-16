@@ -63,6 +63,4 @@ class PostsFragment : Fragment() {
         }
     }
 
-
-
 }

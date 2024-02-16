@@ -5,11 +5,16 @@ import android.provider.CloudMediaProviderContract.MediaColumns.ID
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kz.tutorial.jsonplaceholdertypicode.databinding.FragmentCommentsBinding
 import kz.tutorial.jsonplaceholdertypicode.domain.model.Comment
+import kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostsFragmentDirections
+import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.SpaceItemDecoration
+import kz.tutorial.jsonplaceholdertypicode.presentation.utils.extensions.openEmailWithAddress
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -38,6 +43,9 @@ class CommentsFragment : Fragment() {
 
     private fun initAdapter() {
         adapter = CommetsAdapter()
+        adapter.listener = ClickListener {
+            obesrveCommit(it)
+        }
         binding.recycleComments.layoutManager =
             LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         binding.recycleComments.adapter = adapter
@@ -76,5 +84,9 @@ class CommentsFragment : Fragment() {
         } else {
             binding.loading.visibility = View.GONE
         }
+    }
+
+    private fun obesrveCommit(mail: String){
+            context?.openEmailWithAddress(mail)
     }
 }
