@@ -41,7 +41,7 @@
 				style="@style/Body1"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginStart="16dp"
+				android:layout_marginStart="4dp"
 				android:layout_marginTop="8dp"
 				android:textColor="@color/main_01"
 				tools:text="header" />
@@ -86,13 +86,14 @@
 				android:text="@string/show_all"
 				android:textColor="@color/links" />
 		</LinearLayout>
-		<include android:id="@+id/comments" layout="@layout/three_commets" />
+		<include android:id="@+id/comments" layout="@layout/three_comments" />
 		<ProgressBar
 			android:id="@+id/loading"
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"
+			android:layout_height="wrap_content"
 			/>
 	</LinearLayout>
+
 	
 
 	

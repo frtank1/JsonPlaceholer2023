@@ -51,10 +51,11 @@ class UsersFragment : Fragment() {
                 }
 
                 UsersState.Loading -> {
-
+                    changeLoading()
                 }
 
                 is UsersState.Success -> {
+                    changeLoading()
                     changeAdapter(it.listUsers)
                 }
             }
@@ -66,5 +67,13 @@ class UsersFragment : Fragment() {
         adapter.notifyDataSetChanged()
     }
 
+    private fun changeLoading() {
+        if (binding.loading.visibility == View.GONE) {
+            binding.loading.visibility = View.VISIBLE
+        } else {
+            binding.loading.visibility = View.GONE
+        }
+
+    }
 
 }

@@ -1,6 +1,7 @@
 package kz.tutorial.jsonplaceholdertypicode.presentation.posts.details.comments
 
 import android.os.Bundle
+import android.provider.CloudMediaProviderContract.MediaColumns.ID
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +20,7 @@ class CommentsFragment : Fragment() {
 
     private lateinit var adapter: CommetsAdapter
     private val viewModel: CommentsViewModel by viewModel {
-        parametersOf(arguments?.getInt("id", 0))
+        parametersOf(arguments?.getInt(ID, 0))
     }
 
 
@@ -53,10 +54,11 @@ class CommentsFragment : Fragment() {
                 }
 
                 CommentsState.Loading -> {
-
+                    changeLoading()
                 }
 
                 is CommentsState.Success -> {
+                    changeLoading()
                     changeAdapter(it.listComment)
                 }
             }
@@ -68,5 +70,11 @@ class CommentsFragment : Fragment() {
         adapter.notifyDataSetChanged()
     }
 
-
+    private fun changeLoading() {
+        if (binding.loading.visibility == View.GONE) {
+            binding.loading.visibility = View.VISIBLE
+        } else {
+            binding.loading.visibility = View.GONE
+        }
+    }
 }

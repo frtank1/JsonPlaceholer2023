@@ -8,4 +8,9 @@ class GetUsersUseCaseImpl(private val usersRepository: UsersRepository) : GetUse
     override suspend fun invoke(): List<User> {
         return usersRepository.getUsers()
     }
+
+    override suspend fun getUser(id: Int): User {
+       return usersRepository.getUser(id)
+    }
+
 }

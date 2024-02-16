@@ -7,9 +7,11 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import kz.tutorial.jsonplaceholdertypicode.domain.client.GetCommentsUseCase
 import kz.tutorial.jsonplaceholdertypicode.domain.client.GetPostUseCase
+import kz.tutorial.jsonplaceholdertypicode.domain.client.GetUsersUseCase
+import kz.tutorial.jsonplaceholdertypicode.presentation.utils.DefaultString
 
 
-class DetailsViewModel(private val getPostUseCase: GetPostUseCase,private val getCommentsUseCase: GetCommentsUseCase,val id: Int) : ViewModel() {
+class DetailsViewModel(private val getPostUseCase: GetPostUseCase,private val getUsersUseCase: GetUsersUseCase,private val getCommentsUseCase: GetCommentsUseCase,val id: Int) : ViewModel() {
 
     private val _postDetailsLiveData: MutableLiveData<PostState> = MutableLiveData()
     val postDetailsLiveData: LiveData<PostState> = _postDetailsLiveData
@@ -23,9 +25,10 @@ class DetailsViewModel(private val getPostUseCase: GetPostUseCase,private val ge
         viewModelScope.launch {
             val post = getPostUseCase.invoke(id)
             val list = getCommentsUseCase.getComments(id)
+            val user = getUsersUseCase.getUser(id)
 
             if (post != null || list != null) {
-                _postDetailsLiveData.postValue(PostState.Success(list, post))
+                _postDetailsLiveData.postValue(PostState.Success(list, post, user.name?:DefaultString))
             } else {
                 _postDetailsLiveData.postValue(PostState.Error(error("null")))
             }

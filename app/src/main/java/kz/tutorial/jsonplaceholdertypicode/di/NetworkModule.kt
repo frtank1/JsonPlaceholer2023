@@ -1,8 +1,8 @@
 package kz.tutorial.jsonplaceholdertypicode.di
 
-import kz.tutorial.jsonplaceholdertypicode.constants.BASE_URL
-import kz.tutorial.jsonplaceholdertypicode.data.network.MainApi
+import kz.tutorial.jsonplaceholdertypicode.data.network.PostsApi
 import kz.tutorial.jsonplaceholdertypicode.data.network.UsersApi
+import kz.tutorial.jsonplaceholdertypicode.presentation.utils.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -46,10 +46,10 @@ val networkModule = module {
             .build()
     }
 
-    factory<MainApi> {
+    factory<PostsApi> {
         val retrofit: Retrofit = get()
 
-        retrofit.create(MainApi::class.java)
+        retrofit.create(PostsApi::class.java)
     }
 
     factory<UsersApi> {

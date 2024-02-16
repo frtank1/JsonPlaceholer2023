@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import kz.tutorial.jsonplaceholdertypicode.databinding.FragmentDetailsBinding
 import kz.tutorial.jsonplaceholdertypicode.domain.model.Comment
 import kz.tutorial.jsonplaceholdertypicode.domain.model.Post
+import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ID
+import kz.tutorial.jsonplaceholdertypicode.presentation.utils.extensions.openEmailWithAddress
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -18,7 +21,7 @@ class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
 
     private val id_post: Int by lazy {
-        arguments?.getInt("id", 0) ?: 0
+        arguments?.getInt(ID, 0) ?: 0
     }
 
     private val viewModel: DetailsViewModel by viewModel {
@@ -53,7 +56,7 @@ class DetailsFragment : Fragment() {
 
                     is PostState.Success -> {
                         changeLoading()
-                        initTitle(it.post)
+                        initTitle(it.post, it.name)
                         initComments(it.listComment)
                     }
                 }
@@ -68,13 +71,13 @@ class DetailsFragment : Fragment() {
         } else {
             binding.loading.visibility = View.GONE
         }
-
     }
 
-    private fun initTitle(post: Post) {
+    private fun initTitle(post: Post, name: String) {
         with(binding) {
             titleMain.text = post.title
             body.text = post.body
+            userName.text = name
         }
     }
 
@@ -105,11 +108,28 @@ class DetailsFragment : Fragment() {
     private fun observeOnclick() {
         binding.showAll.setOnClickListener {
             NavHostFragment.findNavController(this).navigate(
-                kz.tutorial.jsonplaceholdertypicode.presentation.posts.details.DetailsFragmentDirections.detailsToComments(
+                DetailsFragmentDirections.detailsToComments(
                     id_post
                 )
             )
         }
+        with(binding) {
+
+            with(comments) {
+                obesrveCommit(firstCommit.mail)
+                obesrveCommit(secondCommit.mail)
+                obesrveCommit(thirdCommit.mail)
+
+            }
+        }
+
     }
+
+        private fun obesrveCommit(view:TextView){
+            view.setOnClickListener {
+                context?.openEmailWithAddress(view.text.toString())
+            }
+        }
+
 
 }
