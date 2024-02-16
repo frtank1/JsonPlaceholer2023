@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kz.tutorial.jsonplaceholdertypicode.databinding.FragmentUsersBinding
+import kz.tutorial.jsonplaceholdertypicode.domain.model.Comment
+import kz.tutorial.jsonplaceholdertypicode.domain.model.User
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.SpaceItemDecoration
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -53,11 +55,16 @@ class UsersFragment : Fragment() {
                 }
 
                 is UsersState.Success -> {
-                    adapter.setData(it.listUsers)
-                    adapter.notifyDataSetChanged()
+                    changeAdapter(it.listUsers)
                 }
             }
         }
     }
+
+    private fun changeAdapter(list: List<User>){
+        adapter.setData(list)
+        adapter.notifyDataSetChanged()
+    }
+
 
 }

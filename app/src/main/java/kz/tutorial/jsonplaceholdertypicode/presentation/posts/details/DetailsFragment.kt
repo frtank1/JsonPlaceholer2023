@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import kz.tutorial.jsonplaceholdertypicode.databinding.FragmentDetailsBinding
+import kz.tutorial.jsonplaceholdertypicode.domain.model.Comment
+import kz.tutorial.jsonplaceholdertypicode.domain.model.Post
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -46,35 +48,58 @@ class DetailsFragment : Fragment() {
                     }
 
                     PostState.Loading -> {
-                        loading.visibility = View.VISIBLE
+                        changeLoading()
                     }
 
                     is PostState.Success -> {
-                        loading.visibility = View.GONE
-                        titleMain.text = it.post.title
-                        body.text = it.post.body
-                        with(comments) {
-                            with(firstCommit) {
-                                title.text = it.listComment[0].name
-                                bodyComments.text = it.listComment[0].body
-                                mail.text = it.listComment[0].email
-                            }
-                            with(secondCommit) {
-                                title.text = it.listComment[1].name
-                                bodyComments.text = it.listComment[1].body
-                                mail.text = it.listComment[1].email
-                            }
-                            with(thirdCommit) {
-                                title.text = it.listComment[2].name
-                                bodyComments.text = it.listComment[2].body
-                                mail.text = it.listComment[2].email
-                            }
-
-                        }
+                        changeLoading()
+                        initTitle(it.post)
+                        initComments(it.listComment)
                     }
                 }
             }
         }
+
+    }
+
+    private fun changeLoading() {
+        if (binding.loading.visibility == View.GONE) {
+            binding.loading.visibility = View.VISIBLE
+        } else {
+            binding.loading.visibility = View.GONE
+        }
+
+    }
+
+    private fun initTitle(post: Post) {
+        with(binding) {
+            titleMain.text = post.title
+            body.text = post.body
+        }
+    }
+
+    private fun initComments(list: List<Comment>) {
+        with(binding) {
+            with(comments) {
+                with(firstCommit) {
+                    title.text = list[0].name
+                    bodyComments.text = list[0].body
+                    mail.text = list[0].email
+                }
+                with(secondCommit) {
+                    title.text = list[1].name
+                    bodyComments.text = list[1].body
+                    mail.text = list[1].email
+                }
+                with(thirdCommit) {
+                    title.text = list[2].name
+                    bodyComments.text = list[2].body
+                    mail.text = list[2].email
+                }
+
+            }
+        }
+
     }
 
     private fun observeOnclick() {
