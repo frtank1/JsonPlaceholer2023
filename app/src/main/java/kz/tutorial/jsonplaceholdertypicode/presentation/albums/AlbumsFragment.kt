@@ -22,3 +22,4 @@ class AlbumsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_albums, container, false)
     }
 }
+

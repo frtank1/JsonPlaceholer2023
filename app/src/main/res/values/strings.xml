@@ -12,4 +12,7 @@
     <string name="comments">Comments</string>
     <string name="show_all">Show All</string>
     <string name="fl_name">Full Name:</string>
+    <string name="username">Username</string>
+    <string name="album_name"> Album name</string>
+    <string name="album_image" />
 </resources>

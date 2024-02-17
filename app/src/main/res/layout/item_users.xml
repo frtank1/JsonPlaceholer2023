@@ -59,8 +59,8 @@
 				android:layout_height="wrap_content"
 				android:textColor="@color/links" />
 		</LinearLayout>
-		
-	
+
+
 	</LinearLayout>
 
 </androidx.cardview.widget.CardView>
