@@ -39,11 +39,23 @@
 	<fragment
 		android:id="@+id/albums"
 		android:name="kz.tutorial.jsonplaceholdertypicode.presentation.albums.AlbumsFragment">
+		<action app:destination="@+id/photos"
+			android:id="@+id/albums_to_photos"/>
 	</fragment>
 	
 	<fragment
 		android:id="@+id/photos"
 		android:name="kz.tutorial.jsonplaceholdertypicode.presentation.albums.photo_user.UserPhotoFragment">
+		<argument
+			android:name="id_album"
+			app:argType="integer"
+			app:nullable="false"/>
+		<argument
+			android:name="user_name"
+			app:argType="string" />
+		<argument
+			android:name="album_name"
+			app:argType="string" />
 	</fragment>
 	
 </navigation>

@@ -6,10 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kz.tutorial.jsonplaceholdertypicode.databinding.FragmentAlbumsBinding
 import kz.tutorial.jsonplaceholdertypicode.domain.model.AlbumsObject
-import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
+import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListenerWithThree
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.SpaceItemDecoration
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -32,8 +33,12 @@ class AlbumsFragment : Fragment() {
 
     private fun initAdapter() {
         adapter = AlbumsAdapter()
-        adapter.listener = ClickListener {
-
+        adapter.listener = ClickListenerWithThree { id,name ,albumName->
+            NavHostFragment.findNavController(this).navigate(
+                AlbumsFragmentDirections.albumsToPhotos(
+                    id,name,albumName
+                )
+            )
         }
         binding.rvAlbums.layoutManager =
             LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
