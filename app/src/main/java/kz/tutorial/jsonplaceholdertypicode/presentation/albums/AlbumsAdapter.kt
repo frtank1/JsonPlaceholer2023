@@ -2,38 +2,46 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import kz.tutorial.jsonplaceholdertypicode.R
 import kz.tutorial.jsonplaceholdertypicode.databinding.ItemAlbumsBinding
-import kz.tutorial.jsonplaceholdertypicode.domain.model.Album
+import kz.tutorial.jsonplaceholdertypicode.domain.model.AlbumsObject
+import kz.tutorial.jsonplaceholdertypicode.domain.model.User
+import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
 
-class AlbumsAdapter(private val albums: List<Album>) : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>() {
+class AlbumsAdapter() :
+    RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>() {
 
+    private var data: List<AlbumsObject> = emptyList()
+    fun setData(data: List<AlbumsObject>) {
+        this.data = data
+    }
+    var listener: ClickListener<Int>? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
         val binding = ItemAlbumsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return AlbumViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
-        holder.bind(albums[position])
+        holder.bind(data[position])
+        holder.itemView.setOnClickListener {
+            listener?.onClick(data[position].album.id)
+        }
     }
 
-    override fun getItemCount(): Int = albums.size
+    override fun getItemCount(): Int = data.size
 
-    class AlbumViewHolder(private val binding: ItemAlbumsBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(album: Album) {
-            binding.albumTitle.text = album.title
-            binding.albumUsername.text = "User ID: ${album.userId}"
-
-
-            // Use Glide
+    class AlbumViewHolder(private val binding: ItemAlbumsBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(album: AlbumsObject) {
+            binding.albumTitle.text = album.album.title
+            binding.albumUsername.text = "User ID: ${album.userName}"
             Glide.with(binding.root)
-                .load(album.  )
-                .placeholder(R.drawable.placeholder_image)
-                .error(R.drawable.error_image)
-                .into(binding.albumImage) //
-
-
-        }
+                .load(album.urlFirstPhoto)
+                .placeholder(R.drawable.ic_launcher_background)
+                .error(R.drawable.ic_launcher_background)
+                .into(binding.albumImage)
         }
     }
-
 }
+
+

@@ -47,15 +47,15 @@ class DetailsFragment : Fragment() {
         viewModel.postDetailsLiveData.observe(viewLifecycleOwner) {
             with(binding) {
                 when (it) {
-                    is PostState.Error -> {
+                    is Detailstate.Error -> {
                     }
 
-                    PostState.Loading -> {
-                        changeLoading()
+                    Detailstate.Loading -> {
+                        changeLoading(true)
                     }
 
-                    is PostState.Success -> {
-                        changeLoading()
+                    is Detailstate.Success -> {
+                        changeLoading(false)
                         initTitle(it.post, it.name)
                         initComments(it.listComment)
                     }
@@ -65,11 +65,10 @@ class DetailsFragment : Fragment() {
 
     }
 
-    private fun changeLoading() {
-        if (binding.loading.visibility == View.GONE) {
-            binding.loading.visibility = View.VISIBLE
-        } else {
-            binding.loading.visibility = View.GONE
+    private fun changeLoading(status: Boolean) {
+        when (status) {
+            true -> binding.loading.visibility = View.VISIBLE
+            else -> binding.loading.visibility = View.GONE
         }
     }
 

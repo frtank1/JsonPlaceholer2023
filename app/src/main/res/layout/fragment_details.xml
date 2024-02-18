@@ -5,7 +5,9 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	tools:context=".presentation.MainActivity">
-	
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
 	<LinearLayout
 		android:id="@+id/title"
 		android:layout_width="match_parent"
@@ -87,16 +89,11 @@
 				android:textColor="@color/links" />
 		</LinearLayout>
 		<include android:id="@+id/comments" layout="@layout/three_comments" />
+	</LinearLayout>
 		<ProgressBar
 			android:id="@+id/loading"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_height="match_parent"
 			/>
-	</LinearLayout>
-
-	
-
-	
-
-
+	</FrameLayout>
 </androidx.core.widget.NestedScrollView>

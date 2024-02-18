@@ -7,17 +7,18 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import kz.tutorial.jsonplaceholdertypicode.domain.client.GetCommentsUseCase
 import kz.tutorial.jsonplaceholdertypicode.domain.client.GetPostUseCase
+import kz.tutorial.jsonplaceholdertypicode.domain.client.GetUserUseCase
 import kz.tutorial.jsonplaceholdertypicode.domain.client.GetUsersUseCase
-import kz.tutorial.jsonplaceholdertypicode.presentation.utils.DefaultString
+import kz.tutorial.jsonplaceholdertypicode.presentation.utils.DEFAULT_STRING
 
 
-class DetailsViewModel(private val getPostUseCase: GetPostUseCase,private val getUsersUseCase: GetUsersUseCase,private val getCommentsUseCase: GetCommentsUseCase,val id: Int) : ViewModel() {
+class DetailsViewModel(private val getPostUseCase: GetPostUseCase, private val getUsersUseCase: GetUserUseCase, private val getCommentsUseCase: GetCommentsUseCase, val id: Int) : ViewModel() {
 
-    private val _postDetailsLiveData: MutableLiveData<PostState> = MutableLiveData()
-    val postDetailsLiveData: LiveData<PostState> = _postDetailsLiveData
+    private val _postDetailsLiveData: MutableLiveData<Detailstate> = MutableLiveData()
+    val postDetailsLiveData: LiveData<Detailstate> = _postDetailsLiveData
 
     init {
-        _postDetailsLiveData.postValue(PostState.Loading)
+        _postDetailsLiveData.postValue(Detailstate.Loading)
         getPosts()
     }
 
@@ -28,9 +29,9 @@ class DetailsViewModel(private val getPostUseCase: GetPostUseCase,private val ge
             val user = getUsersUseCase.getUser(id)
 
             if (post != null || list != null) {
-                _postDetailsLiveData.postValue(PostState.Success(list, post, user.name?:DefaultString))
+                _postDetailsLiveData.postValue(Detailstate.Success(list, post, user.name?:DEFAULT_STRING))
             } else {
-                _postDetailsLiveData.postValue(PostState.Error(error("null")))
+                _postDetailsLiveData.postValue(Detailstate.Error(error("null")))
             }
         }
 

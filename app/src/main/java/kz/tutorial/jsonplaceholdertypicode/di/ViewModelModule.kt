@@ -2,6 +2,8 @@ package kz.tutorial.jsonplaceholdertypicode.di
 
 import kz.tutorial.jsonplaceholdertypicode.domain.model.Album
 import kz.tutorial.jsonplaceholdertypicode.domain.model.Comment
+import kz.tutorial.jsonplaceholdertypicode.presentation.albums.AlbumsViewModel
+import kz.tutorial.jsonplaceholdertypicode.presentation.albums.photo_user.PhotoViewModel
 import kz.tutorial.jsonplaceholdertypicode.presentation.posts.details.comments.CommentsViewModel
 import kz.tutorial.jsonplaceholdertypicode.presentation.posts.details.DetailsViewModel
 import kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostsViewModel
@@ -28,7 +30,11 @@ val viewModelModule = module {
     }
 
     viewModel {
-        AlbumsViewModel(get())
+        AlbumsViewModel(get(),get(),get())
     }
+    viewModel {
+        PhotoViewModel()
+    }
+
 
 }

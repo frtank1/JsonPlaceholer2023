@@ -1,5 +1,6 @@
 package kz.tutorial.jsonplaceholdertypicode.presentation
 
+
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
@@ -14,16 +15,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        navigateObserver()
+    }
+
+    private fun navigateObserver(){
         binding.bottomNavigation.setOnItemSelectedListener {
             when(it.itemId){
-               R.id.posts ->{Navigation.findNavController(binding.flContainer).navigate(R.id.posts)}
-                R.id.vector -> {}
+                R.id.posts ->{Navigation.findNavController(binding.flContainer).navigate(R.id.posts)}
+                R.id.vector -> {Navigation.findNavController(binding.flContainer).navigate(R.id.albums)}
                 R.id.users -> {Navigation.findNavController(binding.flContainer).navigate(R.id.users)}
                 R.id.profile -> {}
             }
             true
         }
     }
-
 
 }
