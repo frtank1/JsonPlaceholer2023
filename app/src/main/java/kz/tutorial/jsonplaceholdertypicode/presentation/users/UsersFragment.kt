@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kz.tutorial.jsonplaceholdertypicode.databinding.FragmentUsersBinding
-import kz.tutorial.jsonplaceholdertypicode.domain.model.Comment
 import kz.tutorial.jsonplaceholdertypicode.domain.model.User
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.SpaceItemDecoration
@@ -33,7 +33,8 @@ class UsersFragment : Fragment() {
     private fun initAdapter() {
         adapter = UsersAdapter()
         adapter.listener = ClickListener {
-
+            NavHostFragment.findNavController(this)
+                .navigate(UsersFragmentDirections.usersToUser(it.id ?: 0))
         }
         binding.recycleUsers.layoutManager =
             LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
@@ -62,7 +63,7 @@ class UsersFragment : Fragment() {
         }
     }
 
-    private fun changeAdapter(list: List<User>){
+    private fun changeAdapter(list: List<User>) {
         adapter.setData(list)
         adapter.notifyDataSetChanged()
     }

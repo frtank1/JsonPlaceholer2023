@@ -28,3 +28,29 @@ fun Context?.openEmailWithAddress(email: String) {
         this?.showToast("No email app")
     }
 }
+
+fun Context?.openLocation(uri: Uri) {
+    if (this == null) return
+
+    val intent = Intent(Intent.ACTION_VIEW,uri)
+
+    try {
+        startActivity(intent)
+    } catch (e: ActivityNotFoundException) {
+        this?.showToast("No map app")
+    }
+}
+
+
+fun Context?.openWebsite(url: String) {
+    if (this == null) return
+    val webpage = Uri.parse(url)
+
+    val browserIntent = Intent(Intent.ACTION_VIEW, webpage)
+
+    try {
+        startActivity(browserIntent)
+    } catch (e: ActivityNotFoundException) {
+        this?.showToast("No browser app")
+    }
+}

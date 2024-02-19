@@ -8,6 +8,7 @@ import kz.tutorial.jsonplaceholdertypicode.presentation.posts.details.comments.C
 import kz.tutorial.jsonplaceholdertypicode.presentation.posts.details.DetailsViewModel
 import kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostsViewModel
 import kz.tutorial.jsonplaceholdertypicode.presentation.users.UsersViewModel
+import kz.tutorial.jsonplaceholdertypicode.presentation.users.user.UserViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -27,6 +28,10 @@ val viewModelModule = module {
 
     viewModel {
         UsersViewModel(get())
+    }
+
+    viewModel{(userId: Int)->
+        UserViewModel(get(),userId)
     }
 
     viewModel {

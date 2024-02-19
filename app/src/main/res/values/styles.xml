@@ -8,7 +8,7 @@
 
     <style name="Header2">
         <item name="android:textSize">18sp</item>
-        <item name="fontWeight">700</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="Header3">

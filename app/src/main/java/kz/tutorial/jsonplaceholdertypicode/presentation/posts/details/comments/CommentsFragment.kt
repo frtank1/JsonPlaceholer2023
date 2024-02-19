@@ -5,13 +5,10 @@ import android.provider.CloudMediaProviderContract.MediaColumns.ID
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kz.tutorial.jsonplaceholdertypicode.databinding.FragmentCommentsBinding
 import kz.tutorial.jsonplaceholdertypicode.domain.model.Comment
-import kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostsFragmentDirections
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.SpaceItemDecoration
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.extensions.openEmailWithAddress
@@ -28,7 +25,6 @@ class CommentsFragment : Fragment() {
         parametersOf(arguments?.getInt(ID, 0))
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -44,7 +40,7 @@ class CommentsFragment : Fragment() {
     private fun initAdapter() {
         adapter = CommetsAdapter()
         adapter.listener = ClickListener {
-            obesrveCommit(it)
+            observeCommit(it)
         }
         binding.recycleComments.layoutManager =
             LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
@@ -58,35 +54,33 @@ class CommentsFragment : Fragment() {
         viewModel.commentsDetailsLiveData.observe(viewLifecycleOwner) {
             when (it) {
                 is CommentsState.Error -> {
-
                 }
 
                 CommentsState.Loading -> {
-                    changeLoading()
+                    changeLoading(true)
                 }
 
                 is CommentsState.Success -> {
-                    changeLoading()
+                    changeLoading(false)
                     changeAdapter(it.listComment)
                 }
             }
         }
     }
 
-    private fun changeAdapter(list: List<Comment>){
+    private fun changeAdapter(list: List<Comment>) {
         adapter.setData(list)
         adapter.notifyDataSetChanged()
     }
 
-    private fun changeLoading() {
-        if (binding.loading.visibility == View.GONE) {
-            binding.loading.visibility = View.VISIBLE
-        } else {
-            binding.loading.visibility = View.GONE
+    private fun changeLoading(status: Boolean) {
+        when (status) {
+            true -> binding.loading.visibility = View.VISIBLE
+            else -> binding.loading.visibility = View.GONE
         }
     }
 
-    private fun obesrveCommit(mail: String){
-            context?.openEmailWithAddress(mail)
+    private fun observeCommit(mail: String) {
+        context?.openEmailWithAddress(mail)
     }
 }

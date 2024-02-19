@@ -18,21 +18,19 @@
 			android:layout_height="wrap_content"
 			android:layout_marginTop="8dp"
 			android:orientation="horizontal">
-			
 			<TextView
 				style="@style/Body1"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="@string/email"
+				android:text="@string/company_name"
 				android:textColor="@color/text_02" />
-			
 			<TextView
-				android:id="@+id/mail"
+				android:id="@+id/cm_name"
 				style="@style/Body1"
+				android:layout_marginStart="8dp"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginStart="8dp"
-				android:textColor="@color/links" />
+				android:textColor="@color/text_01" />
 		</LinearLayout>
 		
 		
@@ -41,20 +39,18 @@
 			android:layout_height="wrap_content"
 			android:layout_marginTop="8dp"
 			android:orientation="horizontal">
-			
 			<TextView
 				style="@style/Body1"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/fl_name"
 				android:textColor="@color/text_02" />
-			
 			<TextView
 				android:id="@+id/full_name"
 				style="@style/Body1"
+				android:layout_marginStart="8dp"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginStart="8dp"
 				android:textColor="@color/text_01" />
 		</LinearLayout>
 		
@@ -63,43 +59,19 @@
 			android:layout_height="wrap_content"
 			android:layout_marginTop="8dp"
 			android:orientation="horizontal">
-			
 			<TextView
 				style="@style/Body1"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="@string/phone"
+				android:text="@string/business_services"
 				android:textColor="@color/text_02" />
-			
 			<TextView
-				android:id="@+id/phone"
+				android:id="@+id/business_services"
 				style="@style/Body1"
+				android:layout_marginStart="8dp"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginStart="8dp"
-				android:textColor="@color/main_01" />
-		</LinearLayout>
-		
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="8dp"
-			android:orientation="horizontal">
-			
-			<TextView
-				style="@style/Body1"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="@string/website"
-				android:textColor="@color/text_02" />
-			
-			<TextView
-				android:id="@+id/website"
-				style="@style/Body1"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginStart="8dp"
-				android:textColor="@color/links" />
+				android:textColor="@color/text_01" />
 		</LinearLayout>
 	</LinearLayout>
 

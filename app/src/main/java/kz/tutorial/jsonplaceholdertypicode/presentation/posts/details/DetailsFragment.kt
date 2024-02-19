@@ -39,11 +39,11 @@ class DetailsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initViews()
+        initObserver()
         observeOnclick()
     }
 
-    fun initViews() {
+    fun initObserver() {
         viewModel.postDetailsLiveData.observe(viewLifecycleOwner) {
             with(binding) {
                 when (it) {
@@ -115,16 +115,16 @@ class DetailsFragment : Fragment() {
         with(binding) {
 
             with(comments) {
-                obesrveCommit(firstCommit.mail)
-                obesrveCommit(secondCommit.mail)
-                obesrveCommit(thirdCommit.mail)
+                observeCommit(firstCommit.mail)
+                observeCommit(secondCommit.mail)
+                observeCommit(thirdCommit.mail)
 
             }
         }
 
     }
 
-        private fun obesrveCommit(view:TextView){
+        private fun observeCommit(view:TextView){
             view.setOnClickListener {
                 context?.openEmailWithAddress(view.text.toString())
             }

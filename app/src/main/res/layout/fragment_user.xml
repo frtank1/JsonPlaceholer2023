@@ -4,11 +4,61 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	tools:context=".presentation.users.user.UserFragment">
-	
-	<!-- TODO: Update blank fragment layout -->
-	<TextView
+
+	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:text="@string/hello_blank_fragment" />
-
+		android:orientation="vertical">
+		
+		<TextView
+			android:id="@+id/user_name"
+			style="@style/Header1"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="8dp"
+			android:gravity="center"
+			android:padding="24dp"
+			android:textColor="@color/text_01"
+			tools:text="@string/username" />
+		
+		<include
+			android:id="@+id/user_name_card"
+			layout="@layout/item_user_name" />
+		
+		<TextView
+			android:id="@+id/company"
+			style="@style/Header2"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="start"
+			android:paddingStart="16dp"
+			android:paddingVertical="24dp"
+			android:textColor="@color/text_01"
+			android:text="@string/company" />
+		
+		<include
+			android:id="@+id/user_company_card"
+			layout="@layout/item_user_company" />
+		
+		<TextView
+			android:id="@+id/address"
+			style="@style/Header2"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingStart="16dp"
+			android:gravity="start"
+			android:paddingVertical="24dp"
+			android:textColor="@color/text_01"
+			android:text="@string/address" />
+		
+		<include
+			android:id="@+id/user_address_card"
+			layout="@layout/item_users_address" />
+	
+	</LinearLayout>
+	
+	<ProgressBar
+		android:id="@+id/loading"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" />
 </FrameLayout>

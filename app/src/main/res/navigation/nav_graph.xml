@@ -34,6 +34,18 @@
 	<fragment
 		android:id="@+id/users"
 		android:name="kz.tutorial.jsonplaceholdertypicode.presentation.users.UsersFragment">
+		<action
+			app:destination="@+id/user"
+			android:id="@+id/users_to_user"/>
+	</fragment>
+	
+	<fragment
+		android:id="@+id/user"
+		android:name="kz.tutorial.jsonplaceholdertypicode.presentation.users.user.UserFragment">
+		<argument
+			android:name="id"
+			app:argType="integer"
+			app:nullable="false"/>
 	</fragment>
 	
 	<fragment
