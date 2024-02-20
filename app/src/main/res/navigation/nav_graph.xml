@@ -69,5 +69,13 @@
 			android:name="album_name"
 			app:argType="string" />
 	</fragment>
-	
+
+	<fragment
+		android:id="@+id/todos"
+		android:name="kz.tutorial.jsonplaceholdertypicode.presentation.users.user.ToDosFragment">
+		<argument
+			android:name="id"
+			app:argType="integer"
+			app:nullable="false"/>
+	</fragment>
 </navigation>

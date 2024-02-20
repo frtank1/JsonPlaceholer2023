@@ -134,5 +134,4 @@ class ToDosFragment : Fragment() {
             context?.openEmailWithAddress(view.text.toString())
         }
     }
-
 }

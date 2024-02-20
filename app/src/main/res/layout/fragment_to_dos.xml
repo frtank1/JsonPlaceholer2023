@@ -3,7 +3,8 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".presentation.users.user.UserFragment">
+	tools:context=".presentation.users.user.UserFragment"
+	>
 	
 	<LinearLayout
 		android:layout_width="match_parent"
@@ -24,6 +25,23 @@
 		<include
 			android:id="@+id/user_name_card"
 			layout="@layout/item_user_name" />
+
+		<androidx.cardview.widget.CardView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="16dp"
+			android:foreground="?android:attr/selectableItemBackground">
+			<TextView
+				android:id="@+id/todos"
+				style="@style/Header2"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:paddingStart="16dp"
+				android:paddingVertical="24dp"
+				android:textColor="@color/main_01"
+				android:text="@string/todos" />
+		</androidx.cardview.widget.CardView>
 		
 		<TextView
 			android:id="@+id/company"

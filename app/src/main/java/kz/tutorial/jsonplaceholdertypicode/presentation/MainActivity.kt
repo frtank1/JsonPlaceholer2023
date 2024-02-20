@@ -24,8 +24,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.posts ->{Navigation.findNavController(binding.flContainer).navigate(R.id.posts)}
                 R.id.vector -> {Navigation.findNavController(binding.flContainer).navigate(R.id.albums)}
                 R.id.users -> {Navigation.findNavController(binding.flContainer).navigate(R.id.users)}
-                R.id.profile -> {}
-            }
+                R.id.profile -> {{Navigation.findNavController(binding.flContainer).navigate(R.id.todos)  }
             true
         }
     }
