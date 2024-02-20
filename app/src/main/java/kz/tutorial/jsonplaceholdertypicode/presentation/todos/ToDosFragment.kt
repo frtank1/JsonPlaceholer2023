@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import kz.tutorial.jsonplaceholdertypicode.databinding.FragmentUserBinding
+import kz.tutorial.jsonplaceholdertypicode.databinding.FragmentToDosBinding
 import kz.tutorial.jsonplaceholdertypicode.domain.model.User
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.DEFAULT_STRING
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ID
@@ -18,16 +18,17 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 
-class UserFragment : Fragment() {
-    private lateinit var binding: FragmentUserBinding
+class ToDosFragment : Fragment() {
+    private lateinit var binding: FragmentToDosBinding
     private val viewModel: UserViewModel by viewModel {
         parametersOf(arguments?.getInt(ID, 0) ?: 0)
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentUserBinding.inflate(inflater, container, false)
+        binding = FragmentToDosBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -125,6 +126,7 @@ class UserFragment : Fragment() {
         view.setOnClickListener {
             context?.openWebsite(view.text.toString())
         }
+
     }
 
     private fun obesrveMail(view: TextView) {

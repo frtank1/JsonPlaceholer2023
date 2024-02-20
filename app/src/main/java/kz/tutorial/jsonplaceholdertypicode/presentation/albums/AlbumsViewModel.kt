@@ -8,11 +8,8 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kz.tutorial.jsonplaceholdertypicode.domain.client.GetAlbumsUseCase
 import kz.tutorial.jsonplaceholdertypicode.domain.client.GetPhotosUseCase
-import kz.tutorial.jsonplaceholdertypicode.domain.client.GetUserUseCase
 import kz.tutorial.jsonplaceholdertypicode.domain.client.GetUsersUseCase
-import kz.tutorial.jsonplaceholdertypicode.domain.model.Album
-import kz.tutorial.jsonplaceholdertypicode.domain.model.albumConvertToAlbusObject
-import kz.tutorial.jsonplaceholdertypicode.presentation.utils.FIRST
+import kz.tutorial.jsonplaceholdertypicode.domain.model.albumConvertToAlbumObject
 
 class AlbumsViewModel(
     private val getAlbumsUseCase: GetAlbumsUseCase,
@@ -40,7 +37,7 @@ class AlbumsViewModel(
                 val users = usersDeferred.await()
 
                 val albumsObjectList = if (albums != null && photo != null) {
-                    albumConvertToAlbusObject(users, photo, albums)
+                    albumConvertToAlbumObject(users, photo, albums)
                 } else {
                     null
                 }

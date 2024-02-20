@@ -1,15 +1,11 @@
 package kz.tutorial.jsonplaceholdertypicode.presentation.albums.photo_user
 
-import android.widget.LinearLayout
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kz.tutorial.jsonplaceholdertypicode.domain.client.GetPhotosUseCase
-import kz.tutorial.jsonplaceholdertypicode.domain.model.albumConvertToAlbusObject
-import kz.tutorial.jsonplaceholdertypicode.presentation.albums.AlbumsState
 
 class PhotoViewModel(
     private val getPhotosUseCase: GetPhotosUseCase,
@@ -27,7 +23,6 @@ class PhotoViewModel(
         viewModelScope.launch {
             try {
                 val photos= getPhotosUseCase.getPhotos()
-
 
                 val photoList = if (photos != null) {
                     photos.filter { it.albumId ==  id_album }

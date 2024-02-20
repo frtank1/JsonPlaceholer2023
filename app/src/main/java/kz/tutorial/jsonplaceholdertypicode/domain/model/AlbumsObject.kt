@@ -8,7 +8,7 @@ data class AlbumsObject(
     val urlFirstPhoto:String
 )
 
-fun albumConvertToAlbusObject(users:List<User>,photos:List<Photo>,albums:List<Album>):List<AlbumsObject>{
+fun albumConvertToAlbumObject(users:List<User>, photos:List<Photo>, albums:List<Album>):List<AlbumsObject>{
     return  albums.map {album ->
         AlbumsObject(
             album = album,
