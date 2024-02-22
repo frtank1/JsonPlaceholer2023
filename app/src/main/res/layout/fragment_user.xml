@@ -24,7 +24,25 @@
 		<include
 			android:id="@+id/user_name_card"
 			layout="@layout/item_user_name" />
-		
+
+		<androidx.cardview.widget.CardView
+			android:id="@+id/todosCardView"
+			android:visibility="gone"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="16dp"
+			android:foreground="?android:attr/selectableItemBackground">
+			<TextView
+				style="@style/Header2"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:paddingStart="16dp"
+				android:paddingVertical="24dp"
+				android:textColor="@color/main_01"
+				android:text="@string/todos" />
+		</androidx.cardview.widget.CardView>
+
 		<TextView
 			android:id="@+id/company"
 			style="@style/Header2"

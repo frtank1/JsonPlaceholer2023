@@ -6,9 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import kz.tutorial.jsonplaceholdertypicode.R
 import kz.tutorial.jsonplaceholdertypicode.databinding.FragmentUserBinding
 import kz.tutorial.jsonplaceholdertypicode.domain.model.User
+import kz.tutorial.jsonplaceholdertypicode.presentation.todos.ToDosFragmentArgs
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.DEFAULT_STRING
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ID
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.extensions.openEmailWithAddress
@@ -17,11 +21,13 @@ import kz.tutorial.jsonplaceholdertypicode.presentation.utils.extensions.openWeb
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
+private const val MY_USER_ID = 10
 
 class UserFragment : Fragment() {
     private lateinit var binding: FragmentUserBinding
+    private val isMyUser: Boolean by lazy { (arguments?.getInt(ID, MY_USER_ID)?: MY_USER_ID) == MY_USER_ID }
     private val viewModel: UserViewModel by viewModel {
-        parametersOf(arguments?.getInt(ID, 0) ?: 0)
+        parametersOf(arguments?.getInt(ID, MY_USER_ID) ?: MY_USER_ID)
     }
 
     override fun onCreateView(
@@ -32,10 +38,18 @@ class UserFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        initMyTodoView()
         initObserver()
         showMapObserver()
         obesrveMail(binding.userNameCard.mail)
         openBrowser(binding.userNameCard.website)
+    }
+
+    private fun initMyTodoView(){
+        binding.todosCardView.isVisible = isMyUser
+        binding.todosCardView.setOnClickListener {
+            findNavController().navigate(R.id.todoFragment, ToDosFragmentArgs.Builder(10).build().toBundle())
+        }
     }
 
 

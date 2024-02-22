@@ -47,7 +47,16 @@
 			app:argType="integer"
 			app:nullable="false"/>
 	</fragment>
-	
+
+	<fragment
+		android:id="@+id/profile"
+		android:name="Profil">
+		<argument
+			android:name="id"
+			app:argType="integer"
+			app:nullable="false"/>
+	</fragment>
+
 	<fragment
 		android:id="@+id/albums"
 		android:name="kz.tutorial.jsonplaceholdertypicode.presentation.albums.AlbumsFragment">
@@ -71,8 +80,17 @@
 	</fragment>
 
 	<fragment
-		android:id="@+id/todos"
-		android:name="kz.tutorial.jsonplaceholdertypicode.presentation.users.user.ToDosFragment">
+		android:id="@+id/profile"
+		android:name="kz.tutorial.jsonplaceholdertypicode.presentation.users.user.UserFragment">
+		<argument
+			android:name="id"
+			app:argType="integer"
+			app:nullable="false"/>
+	</fragment>
+
+	<fragment
+		android:id="@+id/todoFragment"
+		android:name="kz.tutorial.jsonplaceholdertypicode.presentation.todos.ToDosFragment">
 		<argument
 			android:name="id"
 			app:argType="integer"

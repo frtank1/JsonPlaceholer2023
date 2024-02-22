@@ -19,59 +19,15 @@
 			android:layout_marginStart="8dp"
 			android:gravity="center"
 			android:padding="24dp"
-			android:textColor="@color/text_01"
-			tools:text="@string/username" />
-		
-		<include
-			android:id="@+id/user_name_card"
-			layout="@layout/item_user_name" />
+			android:text="@string/todos"
+			android:textColor="@color/text_01"/>
 
-		<androidx.cardview.widget.CardView
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/rvTodos"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_margin="16dp"
-			android:foreground="?android:attr/selectableItemBackground">
-			<TextView
-				android:id="@+id/todos"
-				style="@style/Header2"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:gravity="center"
-				android:paddingStart="16dp"
-				android:paddingVertical="24dp"
-				android:textColor="@color/main_01"
-				android:text="@string/todos" />
-		</androidx.cardview.widget.CardView>
-		
-		<TextView
-			android:id="@+id/company"
-			style="@style/Header2"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:gravity="start"
-			android:paddingStart="16dp"
-			android:paddingVertical="24dp"
-			android:textColor="@color/text_01"
-			android:text="@string/company" />
-		
-		<include
-			android:id="@+id/user_company_card"
-			layout="@layout/item_user_company" />
-		
-		<TextView
-			android:id="@+id/address"
-			style="@style/Header2"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:paddingStart="16dp"
-			android:gravity="start"
-			android:paddingVertical="24dp"
-			android:textColor="@color/text_01"
-			android:text="@string/address" />
-		
-		<include
-			android:id="@+id/user_address_card"
-			layout="@layout/item_users_address" />
+			android:layout_height="0dp"
+			android:layout_weight="1"
+			tools:listitem="@layout/item_to_dos"/>
 	
 	</LinearLayout>
 	

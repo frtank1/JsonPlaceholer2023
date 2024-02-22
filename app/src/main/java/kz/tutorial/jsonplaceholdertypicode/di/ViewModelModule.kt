@@ -7,6 +7,7 @@ import kz.tutorial.jsonplaceholdertypicode.presentation.albums.photo_user.PhotoV
 import kz.tutorial.jsonplaceholdertypicode.presentation.posts.details.comments.CommentsViewModel
 import kz.tutorial.jsonplaceholdertypicode.presentation.posts.details.DetailsViewModel
 import kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostsViewModel
+import kz.tutorial.jsonplaceholdertypicode.presentation.todos.ToDosViewModel
 import kz.tutorial.jsonplaceholdertypicode.presentation.users.UsersViewModel
 import kz.tutorial.jsonplaceholdertypicode.presentation.users.user.UserViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -32,6 +33,10 @@ val viewModelModule = module {
 
     viewModel{(userId: Int)->
         UserViewModel(get(),userId)
+    }
+
+    viewModel{(userId: Int)->
+        ToDosViewModel(get(),userId)
     }
 
     viewModel {

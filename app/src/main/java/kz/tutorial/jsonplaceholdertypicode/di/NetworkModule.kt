@@ -3,6 +3,7 @@ package kz.tutorial.jsonplaceholdertypicode.di
 import kz.tutorial.jsonplaceholdertypicode.data.network.AlbumsApi
 import kz.tutorial.jsonplaceholdertypicode.data.network.PhotosApi
 import kz.tutorial.jsonplaceholdertypicode.data.network.PostsApi
+import kz.tutorial.jsonplaceholdertypicode.data.network.ToDoApi
 import kz.tutorial.jsonplaceholdertypicode.data.network.UsersApi
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.BASE_URL
 import okhttp3.OkHttpClient
@@ -70,5 +71,10 @@ val networkModule = module {
         val retrofit: Retrofit = get()
 
         retrofit.create(PhotosApi::class.java)
+    }
+    factory<ToDoApi> {
+        val retrofit: Retrofit = get()
+
+        retrofit.create(ToDoApi::class.java)
     }
 }
